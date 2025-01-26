@@ -27,6 +27,6 @@ export const categories = [
 ];
 
 export const BUTTON_TYPE_CLASSES = {
-    google: "google-sign-in",
+    google: "google",
     inverted: "inverted",
 };
