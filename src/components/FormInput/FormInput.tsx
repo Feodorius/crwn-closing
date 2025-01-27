@@ -1,3 +1,4 @@
+import { memo } from "react";
 import "./FormInput.scss";
 
 const FormInput = ({ label, id, type, value, handleChange }) => {
@@ -21,4 +22,4 @@ const FormInput = ({ label, id, type, value, handleChange }) => {
     )
 };
 
-export default FormInput;
+export default memo(FormInput);
