@@ -62,7 +62,7 @@ const SignInForm = () => {
                         label={field.label} />
                 ))}
                 <div className="buttons-container">
-                    <CustomButton buttonType={BUTTON_TYPE_CLASSES.inverted} type="submit">Sign In</CustomButton>
+                    <CustomButton type="submit">Sign In</CustomButton>
                     <CustomButton buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>Google Sign In</CustomButton>
                 </div>
             </form>

@@ -3,7 +3,6 @@ import { FormEvent, useState } from "react";
 import { createAuthUserWithEmailAndPassword, createUserDocFromAuth } from "utils/firebase/firebase.utils";
 import "./SignUpForm.scss";
 import CustomButton from "components/CustomButton/CustomButton";
-import { BUTTON_TYPE_CLASSES } from "../../constants";
 
 const defaultFormFields = {
     displayName: "",
@@ -65,7 +64,7 @@ const SignUpForm = () => {
                         type={field.type}
                         label={field.label} />
                 ))}
-                <CustomButton buttonType={BUTTON_TYPE_CLASSES.inverted} type="submit">Sign Up</CustomButton>
+                <CustomButton type="submit">Sign Up</CustomButton>
             </form>
         </div>
     );
