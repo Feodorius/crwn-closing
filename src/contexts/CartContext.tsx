@@ -1,5 +1,5 @@
 import { createContext, useCallback, useEffect, useMemo, useState } from "react";
-import { Product } from "./ProductContext";
+import { Product } from "./CategoriesContext";
 
 export interface CartItem extends Product {
     quantity: number;

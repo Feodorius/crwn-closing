@@ -1,24 +1,23 @@
 import { memo } from "react";
-import "./FormInput.scss";
+import { Group, Input, FormInputLabel } from "./form-input.styled";
 
 const FormInput = ({ label, id, type, value, handleChange }) => {
     return (
-        <div className="group">
-            <input
-                className="form-input"
+        <Group>
+            <Input
                 id={id}
                 type={type}
                 required
                 value={value}
                 onChange={handleChange} />
             {label &&
-                <label
-                    className={`${value.length ? "shrink" : ""} form-input-label`}
+                <FormInputLabel
+                    shrink={value.length}
                     htmlFor={id}>
                     {label}
-                </label>
+                </FormInputLabel>
             }
-        </div>
+        </Group>
     )
 };
 

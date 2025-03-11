@@ -1,5 +1,4 @@
-import { Link, Outlet } from "react-router";
-import "./navigation.scss";
+import { Outlet } from "react-router";
 import CrwnLogo from "../../assets/crown.svg?react";
 import { UserContext } from "contexts/UserContext";
 import { useContext } from "react";
@@ -7,6 +6,7 @@ import { signOutUser } from "utils/firebase/firebase.utils";
 import CartIcon from "components/CartIcon/CartIcon";
 import CartDropDown from "components/CartDropdown/CartDropdown";
 import { CartContext } from "contexts/CartContext";
+import { NavigationContainer, LogoContainer, NavLinks, NavLink } from "./navigation.styles";
 
 const Navigation = () => {
     const { currentUser } = useContext(UserContext);
@@ -14,28 +14,27 @@ const Navigation = () => {
 
     return (
         <>
-            <div className="navigation">
-                <Link className="logo-container" to="/">
+            <NavigationContainer>
+                <LogoContainer className="logo-container" to="/">
                     <CrwnLogo className="logo" />
-                </Link>
-                <div className="nav-links-container">
-                    <Link to="/shop" className="nav-link">
+                </LogoContainer>
+                <NavLinks>
+                    <NavLink to="/shop" >
                         SHOP
-                    </Link>
+                    </NavLink>
                     {currentUser ? (
-                        <div className="nav-link" onClick={signOutUser}>SIGN OUT</div>
+                        <NavLink as="span" onClick={signOutUser}>SIGN OUT</NavLink>
                     ) : (
-                        <Link to="/auth" className="nav-link">
+                        <NavLink to="/auth" >
                             SIGN IN
-                        </Link>
+                        </NavLink>
                     )}
                     <CartIcon />
-                </div>
+                </NavLinks>
                 {isCartOpen && (
                     <CartDropDown />
                 )}
-            </div>
-
+            </NavigationContainer>
             <Outlet />
         </>
     )

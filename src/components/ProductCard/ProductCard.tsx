@@ -1,7 +1,7 @@
 import CustomButton from "components/CustomButton/CustomButton";
 import "./ProductCard.scss";
 import { BUTTON_TYPE_CLASSES } from "../../constants";
-import { Product } from "contexts/ProductContext";
+import { Product } from "contexts/CategoriesContext";
 import { useContext } from "react";
 import { CartContext } from "contexts/CartContext";
 
@@ -12,6 +12,7 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
     const { imageUrl, name, price } = product;
     const { addItemToCart } = useContext(CartContext);
+
 
     const addProductToCart = () => addItemToCart(product);
 
