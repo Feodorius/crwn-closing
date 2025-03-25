@@ -1,6 +1,9 @@
-import { memo, useContext } from "react";
+import { memo } from "react";
 import "./CheckoutItem.scss";
-import { CartContext, CartItem } from "contexts/CartContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart, clearItemFromCart, removeItemFromCart } from "store/cart/cart.action";
+import { selectCartItems } from "store/cart/cart.selector";
+import { CartItem } from "utils/types";
 
 type CartItemProps = {
     cartItem: CartItem
@@ -8,11 +11,12 @@ type CartItemProps = {
 
 const CheckoutItem = ({ cartItem }: CartItemProps) => {
     const { imageUrl, name, price, quantity } = cartItem;
-    const { clearItemFromCart, addItemToCart, removeItemFromCart } = useContext(CartContext);
+    const dispatch = useDispatch();
+    const cartItems = useSelector(selectCartItems);
 
-    const deleteItemFromCart = () => clearItemFromCart(cartItem);
-    const increaseQuantity = () => addItemToCart(cartItem);
-    const decreaseQuantity = () => removeItemFromCart(cartItem);
+    const deleteItemFromCart = () => dispatch(clearItemFromCart(cartItems, cartItem));
+    const increaseQuantity = () => dispatch(addItemToCart(cartItems, cartItem));
+    const decreaseQuantity = () => dispatch(removeItemFromCart(cartItems, cartItem));
 
 
     return (

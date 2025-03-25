@@ -1,9 +1,10 @@
 import CustomButton from "components/CustomButton/CustomButton";
 import "./ProductCard.scss";
 import { BUTTON_TYPE_CLASSES } from "../../constants";
-import { Product } from "contexts/CategoriesContext";
-import { useContext } from "react";
-import { CartContext } from "contexts/CartContext";
+import { Product } from "utils/types";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCartItems } from "store/cart/cart.selector";
+import { addItemToCart } from "store/cart/cart.action";
 
 interface ProductCardProps {
     product: Product;
@@ -11,10 +12,9 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
     const { imageUrl, name, price } = product;
-    const { addItemToCart } = useContext(CartContext);
-
-
-    const addProductToCart = () => addItemToCart(product);
+    const cartItems = useSelector(selectCartItems);
+    const dispatch = useDispatch();
+    const addProductToCart = () => dispatch(addItemToCart(cartItems, product));
 
     return (
         <div className="product-card-container">

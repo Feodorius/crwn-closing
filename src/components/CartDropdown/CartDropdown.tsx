@@ -1,14 +1,14 @@
 import CustomButton from "components/CustomButton/CustomButton";
 import CartItem from "components/CartItem/CartItem";
-import { useContext } from "react";
-import { CartContext } from "contexts/CartContext";
 import { useNavigate } from "react-router-dom";
 import { BUTTON_TYPE_CLASSES } from "../../constants";
 import { CartDropdownContainer, CartItems, EmptyMessage } from "./CartDropdown.styled";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "store/cart/cart.selector";
 
 const CartDropDown = () => {
     const navigate = useNavigate();
-    const { cartItems } = useContext(CartContext);
+    const cartItems = useSelector(selectCartItems);
 
     const goToCheckout = () => {
         navigate("/checkout");
